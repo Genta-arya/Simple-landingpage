@@ -8,6 +8,7 @@ import Content from "./Component/Content";
 import { Element, animateScroll as scroll, scroller } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import ProductLayout from "./Component/Product";
 
 function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -48,6 +49,7 @@ function Home() {
         <Content />
       </Element>
 
+     
       <Element name="projectSection">
         <ProjectContent />
       </Element>
