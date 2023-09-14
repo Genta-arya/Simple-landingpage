@@ -11,7 +11,6 @@ function ContactLinks() {
       id="contactSection"
       className="flex flex-col items-center justify-center text-center bg-gray-700 p-5 w-screen overflow-hidden"
     >
-      <h2 className="text-2xl font-semibold text-white mb-5">Contact Us</h2>
       <div className="gradient-border">
         {" "}
         <img
