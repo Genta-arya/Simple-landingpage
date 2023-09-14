@@ -1,14 +1,60 @@
-/* Content.css */
 .animate-fade-in {
-    animation: fadeIn 1s ease-in-out 1; /* Adjust the duration as needed */
+  animation: fadeIn 1s ease-in-out 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+  100% {
+    opacity: 1;
   }
-  
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    transparent 100%
+  );
+  animation: shine-animation 2s infinite linear;
+}
+
+@keyframes shine-animation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes shimmer-animation {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, transparent, #fcd34d, transparent);
+  background-size: 200% 100%;
+  animation: shimmer-animation 1.5s infinite;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}

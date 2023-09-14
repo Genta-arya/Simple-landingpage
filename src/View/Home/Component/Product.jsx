@@ -2,6 +2,7 @@ import React from "react";
 import products from "../../../Model/ProductData";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import "../../../Style/Content.css";
 
 function ProductLayout() {
   return (
@@ -9,11 +10,11 @@ function ProductLayout() {
       <h2 className="text-3xl font-bold mb-4 text-center text-white bg-black w-60 rounded-full p-2 ">
         Our Products
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-white p-4 rounded-lg shadow-md relative drop-shadow-2xl "
+            className="bg-white p-4 rounded-lg shadow-md relative drop-shadow-2xl  "
           >
             <img
               src={product.imageUrl}

@@ -4,6 +4,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import "../../../Style/Content.css";
 
 function Navbar() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -33,10 +34,11 @@ function Navbar() {
     <header className="bg-gray-800 shadow-md w-screen overflow-hidden ">
       <div className="container mx-auto py-4 px-4 md:flex md:items-center md:justify-between">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-white hover:text-yellow-300">
-            <FontAwesomeIcon icon={faStar} className="mr-2" style={starStyle} />{" "}
-            STARBOY STUDIO
-          </Link>
+        <Link to="/" className="text-white hover:text-yellow-300">
+  <FontAwesomeIcon icon={faStar} className="mr-2" style={starStyle} />{" "}
+  <span className="text-shimmer text-lg font-bold">STARBOY STUDIO</span>
+</Link>
+
 
           <button
             className="mobile-sidebar-toggle md:hidden text-white"
