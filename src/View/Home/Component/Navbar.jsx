@@ -100,7 +100,7 @@ function Navbar() {
           Home
         </Link>
         <ScrollLink
-          to="photographyInfo"
+          to="productInfo"
           spy={true}
           smooth={true}
           offset={-70}
