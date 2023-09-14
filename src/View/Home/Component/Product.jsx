@@ -6,8 +6,8 @@ import "../../../Style/Content.css";
 
 function ProductLayout() {
   return (
-    <div className=" container mx-auto mt-12 bg-gray-200 rounded-full p-8 border-2 pb-16" id="productInfo">
-      <h2 className="text-3xl font-bold mb-4 text-center text-white bg-black w-60 rounded-full p-2 ">
+    <div className=" container mx-auto mt-12 bg-gray-200 rounded-full p-8 border-2 pb-16 " id="productInfo">
+      <h2 className="text-3xl font-bold mb-4 text-center text-white bg-black w-60 rounded-full p-2 shines ">
         Our Products
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
