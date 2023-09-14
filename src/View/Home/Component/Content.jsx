@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../Style/Content.css";
 import ProductLayout from "./Product";
+import CustomerReviews from "./Review";
 function Content() {
   const leftColumnContent = [
     "Photography is the art, application, and practice of creating durable images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It encompasses various processes and techniques used to capture and manipulate images, including digital photography, analog photography, and alternative processes.",
@@ -33,6 +34,7 @@ function Content() {
           </div>
         </div>
         <ProductLayout />
+        <CustomerReviews />
       </div>
     </section>
   );

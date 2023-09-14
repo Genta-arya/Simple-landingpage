@@ -62,7 +62,7 @@ function Home() {
 
       {showScrollButton && (
         <button
-          className="fixed bottom-10 right-10 bg-gray-700 text-white p-2 rounded-full cursor-pointer hover:bg-gray-500"
+          className="fixed bottom-10 right-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
           onClick={scrollToTop}
         >
           <FontAwesomeIcon icon={faArrowUp} />
