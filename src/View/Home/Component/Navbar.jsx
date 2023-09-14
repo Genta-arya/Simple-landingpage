@@ -108,7 +108,7 @@ function Navbar() {
           className="text-white hover:text-gray-300 py-2 px-4 block"
           style={{ cursor: "pointer" }}
         >
-          About
+          Product
         </ScrollLink>
         <ScrollLink
           to="projectSection"
