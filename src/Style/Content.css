@@ -120,11 +120,29 @@
   }
 }
 
-/* Content.css */
 .rotate {
   transition: transform 0.3s ease-in-out;
 }
 
 .rotate:hover {
   transform: rotate(360deg);
+}
+
+.mobile-carousel {
+  margin-top: 20px;
+}
+
+.mobile-carousel .carousel .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.mobile-carousel .carousel .slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
 }

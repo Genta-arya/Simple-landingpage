@@ -94,25 +94,23 @@
 }
 
 .custom-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 5;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 5;
+}
+
 .custom-card {
   width: 100%;
   max-width: 300px;
-  height: 400px;
+  height: 450px;
   perspective: 1000px;
-  margin: 10px;
+  margin-bottom: 50px;
   transition: transform 0.5s;
   position: relative;
-
 }
 
 .custom-card:hover {
   transform: translateY(-10px);
- 
 }
 
 .card-inner {
@@ -148,10 +146,9 @@
   transform: rotateY(180deg);
 }
 
-
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
     margin-left: 10px;
   }
 }
