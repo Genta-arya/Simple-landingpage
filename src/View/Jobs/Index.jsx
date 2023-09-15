@@ -183,7 +183,7 @@ const JobList = () => {
       <Footer />
       {showScrollButton && (
         <button
-          className="fixed bottom-10 right-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
+          className="fixed bottom-12 right-10 w-14 h-14 bg-gray-700 text-white flex items-center justify-center  rounded-full cursor-pointer hover:bg-gray-500"
           onClick={scrollToTop}
         >
           <FontAwesomeIcon icon={faArrowUp} />
