@@ -9,10 +9,11 @@ import { Element, animateScroll as scroll, scroller } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ProductLayout from "./Component/Product";
+import FloatingMessageButton from "./Component/FNQ";
 
 function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
-
+  const [isChatVisible, setIsChatVisible] = useState(false);
   const scrollToProject = () => {
     scroller.scrollTo("projectSection", {
       duration: 800,
@@ -49,7 +50,6 @@ function Home() {
         <Content />
       </Element>
 
-     
       <Element name="projectSection">
         <ProjectContent />
       </Element>
@@ -60,9 +60,14 @@ function Home() {
 
       <Footer />
 
+      <FloatingMessageButton
+        isChatVisible={isChatVisible}
+        setIsChatVisible={setIsChatVisible}
+      />
+
       {showScrollButton && (
         <button
-          className="fixed bottom-10 right-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
+          className="fixed bottom-10 left-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
           onClick={scrollToTop}
         >
           <FontAwesomeIcon icon={faArrowUp} />
