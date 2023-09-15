@@ -51,12 +51,6 @@ function Navbar() {
         </div>
 
         <nav className="hidden md:block md:flex md:space-x-4  justify-end">
-          <Link
-            to="/"
-            className="text-white hover:text-gray-300 py-2 px-4 block md:inline-block hover:border-b-2 border-white "
-          >
-            Home
-          </Link>
           <ScrollLink
             to="productInfo"
             spy={true}
@@ -106,9 +100,6 @@ function Navbar() {
           showSidebar ? "block" : "hidden"
         } md:hidden bg-gray-800 px-2 pt-2 pb-3`}
       >
-        <Link to="/" className="text-white hover:text-gray-300 py-2 px-4 block">
-          Home
-        </Link>
         <ScrollLink
           to="productInfo"
           spy={true}
