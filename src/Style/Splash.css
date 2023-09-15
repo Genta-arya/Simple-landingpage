@@ -1,0 +1,70 @@
+.splash-screen {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 36px;
+  font-weight: bold;
+  position: relative;
+}
+
+.splash-card {
+  background: linear-gradient(45deg, #e20be2, #2fb9f8, #45048f, #00ff00);
+  background-size: 400% 400%;
+  animation: gradient 5s linear infinite;
+  text-align: center;
+  width: 350px;
+  padding: 50px;
+  margin: 30px;
+  border-radius: 300px;
+  transform: translateZ(40px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 300px;
+  -moz-border-radius: 300px;
+  -ms-border-radius: 300px;
+  -o-border-radius: 300px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.splash-text {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+@keyframes loading {
+  0% {
+    content: ".";
+  }
+  20% {
+    content: "..";
+  }
+  40% {
+    content: "...";
+  }
+  60% {
+    content: "....";
+  }
+  80% {
+    content: ".....";
+  }
+}
+
+.splash-text::after {
+  content: ".";
+  animation: loading 1s infinite steps(1);
+}

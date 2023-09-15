@@ -14,12 +14,12 @@ import FloatingMessageButton from "./Component/FNQ";
 function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
-  const scrollToProject = () => {
-    scroller.scrollTo("projectSection", {
-      duration: 800,
-      delay: 0,
-      smooth: "easeInOutQuart",
-    });
+  const [theme, setTheme] = useState("light"); // Initialize with the light theme
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleTheme = () => {
+    // Toggle between light and dark themes
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   useEffect(() => {
@@ -38,12 +38,20 @@ function Home() {
     };
   }, []);
 
+  const scrollToProject = () => {
+    scroller.scrollTo("projectSection", {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  };
+
   const scrollToTop = () => {
     scroll.scrollToTop();
   };
 
   return (
-    <div style={{ paddingBottom: "60px" }}>
+    <div className={`theme-${theme}`} style={{ paddingBottom: "60px" }}>
       <Navbar scrollToProject={scrollToProject} />
       <Header />
       <Element name="contentSection">
@@ -63,17 +71,8 @@ function Home() {
       <FloatingMessageButton
         isChatVisible={isChatVisible}
         setIsChatVisible={setIsChatVisible}
-        className="fixed bottom-10"
+        className="fixed bottom-10 left-10"
       />
-
-      {/* {showScrollButton && (
-        <button
-          className="fixed bottom-10 left-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
-          onClick={scrollToTop}
-        >
-          <FontAwesomeIcon icon={faArrowUp} />
-        </button>
-      )} */}
     </div>
   );
 }
