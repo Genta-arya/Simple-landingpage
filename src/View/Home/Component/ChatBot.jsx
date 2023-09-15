@@ -14,7 +14,6 @@ const ChatBot = ({ setIsChatVisible }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
-    // Initial greeting message from the bot
     setMessages([
       {
         text: "Hello! I'm here to assist you with your photography service questions. How can I help you today?",
@@ -29,13 +28,15 @@ const ChatBot = ({ setIsChatVisible }) => {
 
   const handleSendMessage = () => {
     if (inputMessage.trim() !== "") {
-      // User message
-      setMessages([...messages, { text: inputMessage, sender: "user" }]);
+      const newMessage = {
+        text: inputMessage,
+        sender: "user",
+        timestamp: new Date(),
+      };
+      setMessages([...messages, newMessage]);
       setInputMessage("");
 
-      // Bot response (you can customize this logic)
       if (selectedOption !== null) {
-        // Display information related to the selected option
         setMessages([
           ...messages,
           {
@@ -43,13 +44,13 @@ const ChatBot = ({ setIsChatVisible }) => {
             sender: "bot",
           },
         ]);
-       
+
         switch (selectedOption) {
           case 0:
             setMessages([
               ...messages,
               {
-                text: "Our photography services include portrait, landscape, and event photography. We offer a range of packages to suit your needs.",
+                text: "Our photography services include Portrait Photo Package, Wedding Photography Package, and Outdoor Photo Session. We offer a range of packages to suit your needs.",
               },
             ]);
             break;
@@ -57,7 +58,7 @@ const ChatBot = ({ setIsChatVisible }) => {
             setMessages([
               ...messages,
               {
-                text: "Our pricing varies depending on the type of photography and package you choose. Please visit our website or contact us for detailed pricing information.",
+                text: "Our pricing varies depending on the type of photography and package you choose. Please visit our product in page or contact us for detailed pricing information.",
               },
             ]);
             break;
@@ -85,7 +86,6 @@ const ChatBot = ({ setIsChatVisible }) => {
           "Can I see some sample photos?",
         ]);
       } else {
-      
         setMessages([
           ...messages,
           {
@@ -96,6 +96,10 @@ const ChatBot = ({ setIsChatVisible }) => {
       }
     }
   };
+  const formatTimestamp = (timestamp) => {
+    const options = { hour: "numeric", minute: "numeric" };
+    return new Intl.DateTimeFormat("en-US", options).format(timestamp);
+  };
 
   const handleOptionClick = (index) => {
     setSelectedOption(index);
@@ -103,7 +107,8 @@ const ChatBot = ({ setIsChatVisible }) => {
   };
 
   return (
-    <div className="fixed bottom-16 right-8 bg-white w-80 p-4 rounded-lg shadow-md">
+    <div className="fixed bottom-16 right-8 bg-white w-80 p-4 rounded-lg shadow-md drop-shadow-2xl">
+      <h2 className="text-xl font-bold mb-4">F&Q</h2>
       <div className="flex justify-end mb-2">
         <button
           className="text-gray-600 hover:text-gray-800 focus:outline-none"
@@ -120,9 +125,22 @@ const ChatBot = ({ setIsChatVisible }) => {
               message.sender === "user" ? "text-right" : "text-left"
             }`}
           >
-            <p className={` mt-5 rounded-lg p-2 inline-block ${message.sender === "user" ? "bg-blue-200 text-blue-700" : "bg-gray-200 text-gray-700"}`}>
-              {message.text}
-            </p>
+            <div className="flex justify-between">
+              <p
+                className={`mt-5 rounded-lg p-2 inline-block ${
+                  message.sender === "user"
+                    ? "bg-blue-200 text-gray-700"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {message.text}
+                {message.sender === "bot" && (
+                  <span className="text-xs text-gray-400 ml-2 ">
+                    {formatTimestamp(message.timestamp)}
+                  </span>
+                )}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -130,19 +148,19 @@ const ChatBot = ({ setIsChatVisible }) => {
         <input
           type="text"
           className="flex-grow border border-gray-300 rounded-l-md p-2"
-          placeholder="Ask your question..."
+          placeholder="Ask your question"
           value={inputMessage}
-          readOnly={true} 
+          readOnly={true}
         />
         <button
-          className="bg-blue-500 text-white rounded-r-md px-4 py-2 hover:bg-blue-600"
+          className="bg-gray-800 text-white rounded-r-md px-4 py-2 hover:bg-gray-600"
           onClick={handleSendMessage}
         >
           <FontAwesomeIcon icon={faPaperPlane} className="text-lg" />
         </button>
       </div>
       <div className="mt-4">
-        <p className="font-semibold">Choose an option:</p>
+        <p className="font-semibold">Choose a question:</p>
         <ul>
           {options.map((option, index) => (
             <li

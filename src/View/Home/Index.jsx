@@ -63,16 +63,17 @@ function Home() {
       <FloatingMessageButton
         isChatVisible={isChatVisible}
         setIsChatVisible={setIsChatVisible}
+        className="fixed bottom-10"
       />
 
-      {showScrollButton && (
+      {/* {showScrollButton && (
         <button
           className="fixed bottom-10 left-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
           onClick={scrollToTop}
         >
           <FontAwesomeIcon icon={faArrowUp} />
         </button>
-      )}
+      )} */}
     </div>
   );
 }

@@ -23,7 +23,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(    to right,    transparent 0%,    rgba(255, 255, 255, 0.6) 30%,    transparent 100%  );
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    transparent 100%
+  );
   animation: shine-animation 3s infinite linear;
   -webkit-animation: shine-animation 3s infinite linear;
 }
@@ -37,7 +42,6 @@
   }
 }
 
-
 .shines {
   position: relative;
   overflow: hidden;
@@ -50,7 +54,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(    to right,    transparent 0%,    rgba(255, 255, 255, 0.6) 30%,    transparent 100%  );
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 30%,
+    transparent 100%
+  );
   animation: shine-animation 5s infinite linear;
   -webkit-animation: shine-animation 5s infinite linear;
 }
@@ -80,4 +89,42 @@
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Content.css */
+.rotate {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate:hover {
+  transform: rotate(360deg);
 }
