@@ -34,11 +34,12 @@ function Navbar() {
     <header className="bg-gray-800 shadow-md w-screen overflow-hidden ">
       <div className="container mx-auto py-4 px-4 md:flex md:items-center md:justify-between">
         <div className="flex items-center justify-between">
-        <Link to="/" className="text-white hover:text-yellow-300">
-  <FontAwesomeIcon icon={faStar} className="mr-2" style={starStyle} />{" "}
-  <span className="text-shimmer text-lg font-bold">STARBOY STUDIO</span>
-</Link>
-
+          <Link to="/" className="text-white hover:text-yellow-300">
+            <FontAwesomeIcon icon={faStar} className="mr-2" style={starStyle} />{" "}
+            <span className="text-shimmer text-lg font-bold">
+              STARBOY STUDIO
+            </span>
+          </Link>
 
           <button
             className="mobile-sidebar-toggle md:hidden text-white"
@@ -89,6 +90,13 @@ function Navbar() {
           >
             Contact
           </ScrollLink>
+
+          <Link
+            to="/jobs"
+            className="text-white hover:text-gray-300 py-2 px-4 block md:inline-block hover:border-b-2 border-white "
+          >
+            Jobs
+          </Link>
         </nav>
       </div>
 
@@ -134,6 +142,12 @@ function Navbar() {
         >
           Contact
         </ScrollLink>
+        <Link
+          to="/jobs"
+          className="text-white hover:text-gray-300 py-2 px-4 block md:inline-block hover:border-b-2 border-white "
+        >
+          Jobs
+        </Link>
       </div>
     </header>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import "../../../Style/Content.css";
 import ProductLayout from "./Product";
 import CustomerReviews from "./Review";
-import ContactLinks from "./Contact";
+
 function Content() {
   const leftColumnContent = [
     "Photography is the art, application, and practice of creating durable images by recording light, either electronically by means of an image sensor, or chemically by means of a light-sensitive material such as photographic film. It encompasses various processes and techniques used to capture and manipulate images, including digital photography, analog photography, and alternative processes.",
@@ -22,21 +22,18 @@ function Content() {
           Photography
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
-          <div className="prose lg:prose-xl mx-auto text-justify">
-            {leftColumnContent.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-          <div className="prose lg:prose-xl mx-auto text-justify">
-            {rightColumnContent.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
+        <div className="prose lg:prose-xl mx-auto text-justify">
+          {leftColumnContent.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+        <div className="prose lg:prose-xl mx-auto text-justify">
+          {rightColumnContent.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
         <ProductLayout />
         <CustomerReviews />
-        
       </div>
     </section>
   );
