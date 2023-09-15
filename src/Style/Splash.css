@@ -15,16 +15,16 @@
   background-size: 400% 400%;
   animation: gradient 5s linear infinite;
   text-align: center;
-  width: 350px;
+  width: 450px;
   padding: 50px;
   margin: 30px;
-  border-radius: 100px;
+  border-radius: 90px;
   transform: translateZ(40px);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  -ms-border-radius: 100px;
-  -o-border-radius: 100px;
+  -webkit-border-radius: 90px;
+  -moz-border-radius: 90px;
+  -ms-border-radius: 90px;
+  -o-border-radius: 90px;
 }
 
 @keyframes gradient {
