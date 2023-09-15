@@ -6,7 +6,7 @@ const SplashScreen = () => {
     <div className="splash-screen">
       <div className="splash-card">
         <h1 className="splash-text">
-          <span>Loading </span>
+          <span>Please wait </span>
         </h1>
       </div>
     </div>
