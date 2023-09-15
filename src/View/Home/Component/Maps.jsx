@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Loader from "react-spinners/FadeLoader";
 
 import customMarkerIcon from "../../../Asset/marker.png";
 
 const ContactMap = () => {
+  const [loading, setLoading] = useState(true); // Tambahkan state loading
+
   const markerPosition = {
     lat: -1.8276226454104454,
     lng: 109.98249520037444,
@@ -27,6 +30,13 @@ const ContactMap = () => {
     );
   };
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000); 
+  }, []);
+
   return (
     <div
       style={{
@@ -37,19 +47,26 @@ const ContactMap = () => {
         padding: "2px",
       }}
     >
-      <MapContainer center={markerPosition} zoom={15} className="w-full h-full">
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          
-        />
-        <Marker
-          position={markerPosition}
-          icon={customIcon}
-          eventHandlers={{ click: handleMarkerClick }}
+      {loading ? (
+        <div className="flex items-center justify-center w-full h-full">
+          <Loader color="#36d7b7" height={40} width={40} />
+        </div>
+      ) : (
+        <MapContainer
+          center={markerPosition}
+          zoom={15}
+          className="w-full h-full"
         >
-          <Popup>STARBOY Company</Popup>
-        </Marker>
-      </MapContainer>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker
+            position={markerPosition}
+            icon={customIcon}
+            eventHandlers={{ click: handleMarkerClick }}
+          >
+            <Popup>STARBOY Company</Popup>
+          </Marker>
+        </MapContainer>
+      )}
     </div>
   );
 };
