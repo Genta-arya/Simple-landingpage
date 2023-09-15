@@ -14,7 +14,7 @@ function ProjectContent() {
     <section id="projectSection" className="py-12 w-screen overflow-hidden">
       <div className="container mx-auto bg-gray-500 rounded-xl p-6 w-screen overflow-hidden m-5">
         <div
-          className="bg-black rounded-full p-2 text-center mb-5 animate-pulse"
+          className="bg-black rounded-full p-2 text-center mb-5 "
           style={{ animationDelay: "500ms" }}
         >
           <h2 className="text-3xl font-semibold text-white">
