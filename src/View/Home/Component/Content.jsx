@@ -22,18 +22,21 @@ function Content() {
           Photography
         </h2>
 
-        <div className="prose lg:prose-xl mx-auto text-justify">
-          {leftColumnContent.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
-        <div className="prose lg:prose-xl mx-auto text-justify">
-          {rightColumnContent.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
+          <div className="prose lg:prose-xl mx-auto text-justify">
+            {leftColumnContent.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="prose lg:prose-xl mx-auto text-justify">
+            {rightColumnContent.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </div>
         <ProductLayout />
         <CustomerReviews />
+        
       </div>
     </section>
   );

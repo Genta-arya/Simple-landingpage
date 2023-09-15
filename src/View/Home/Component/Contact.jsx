@@ -21,7 +21,7 @@ function ContactLinks() {
             className="w-40 h-40 rounded-full p-1"
           />
         </div>
-        <div className="grid grid-cols-3 gap-5 mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
           <a
             href="mailto:starryboy@email.com"
             className="text-white hover:text-gray-400 flex items-center transition-transform transform hover:scale-105 hover:z-10"

@@ -107,7 +107,7 @@ const JobList = () => {
         <div className="flex items-center justify-between p-6 border-b border-gray-300 ">
           <h2 className="text-3xl font-bold job-list-heading">Job List</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6">
+        <div className="custom-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6">
           {loading ? (
             <div className="loader-container ">
               <div className="custom-loader">
@@ -122,7 +122,7 @@ const JobList = () => {
             </p>
           ) : (
             filteredJobs.map((job) => (
-              <div key={job.id} className="custom-card ">
+              <div key={job.id} className="custom-card">
                 <div className="card-inner ">
                   <div className="card-face">
                     <img

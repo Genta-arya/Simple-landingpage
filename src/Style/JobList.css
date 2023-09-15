@@ -93,12 +93,12 @@
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
+.custom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 5;
+  }
+  
 .custom-card {
   width: 100%;
   max-width: 300px;
@@ -108,7 +108,6 @@
   transition: transform 0.5s;
   position: relative;
 
-  z-index: 1; /* Mengatur nilai z-index */
 }
 
 .custom-card:hover {
