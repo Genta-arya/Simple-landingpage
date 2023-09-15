@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Element, animateScroll as scroll, scroller } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Home/Component/Footer";
 import HeaderJob from "./Component/Header";
 import { FaShare } from "react-icons/fa";
@@ -35,6 +36,7 @@ const JobList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [shareURL, setShareURL] = useState("");
   const [jobsFound, setJobsFound] = useState(true);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -51,7 +53,6 @@ const JobList = () => {
       try {
         const response = await axios.request(options);
         if (response.status === 200) {
-    
           const formattedJobs = response.data.data.map((job) => ({
             ...job,
             postDate: formatPostDate(job.postDate),
@@ -72,12 +73,30 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
- 
   const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -94,7 +113,6 @@ const JobList = () => {
         .then(() => console.log("Shared successfully"))
         .catch((error) => console.error("Share failed:", error));
     } else {
-   
       alert("Sharing is not supported on this browser.");
     }
   };
@@ -147,21 +165,30 @@ const JobList = () => {
                     >
                       Apply
                     </a>
-                </div>
-                    <div className="relative">
-                      <FaShare
-                        className="absolute  text-gray-600 cursor-pointer hover:text-gray-800 "
-                        title="Share"
-                        onClick={() => handleShare(job.url)}
-                      />
-                    </div>
                   </div>
+                  <div className="relative">
+                    <FaShare
+                      className="absolute  text-gray-600 cursor-pointer hover:text-gray-800 "
+                      title="Share"
+                      onClick={() => handleShare(job.url)}
+                    />
+                  </div>
+                </div>
               </div>
             ))
           )}
         </div>
       </div>
+
       <Footer />
+      {showScrollButton && (
+        <button
+          className="fixed bottom-10 right-10 bg-gray-700 text-white p-4 rounded-3xl cursor-pointer hover:bg-gray-500"
+          onClick={scrollToTop}
+        >
+          <FontAwesomeIcon icon={faArrowUp} />
+        </button>
+      )}
     </div>
   );
 };
