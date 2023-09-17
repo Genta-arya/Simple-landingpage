@@ -101,10 +101,10 @@ const SlotMachine = () => {
             className="bg-gray-600 rounded-full p-2 hover:scale-110 hover:z-10 drop-shadow-2xl shadow-2xl"
           />
         </Link>
-        <h1 className="text-3xl font-bold mb-4 bg-black text-white p-4 rounded-full border-b-8 border-gray-300">
+        <h1 className=" flex flex-col text-3xl font-bold mb-4 bg-black text-white justify-center items-center p-4 rounded-full border-b-8 border-gray-300">
           Simulasi Slot Machine Game
         </h1>
-        <div className="flex gap-4 sm:gap-9 mb-6 sm:mb-10 border-2 border-black p-6 sm:p-10 shine">
+        <div className="flex  items-center justify-center gap-4 sm:gap-9 mb-6 sm:mb-10 border-2 border-black p-6 sm:p-10 shine">
           {slots.map((slot, index) => (
             <div
               key={index}
@@ -118,7 +118,7 @@ const SlotMachine = () => {
             </div>
           ))}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 mb-4 flex  items-center justify-center">
           <label className="mr-2">Biaya Spin:</label>
           <select
             value={selectedCost}
@@ -132,7 +132,7 @@ const SlotMachine = () => {
             ))}
           </select>
         </div>
-        <div className="mb-4">
+        <div className="mb-4 flex  items-center justify-center">
           <label className="mr-2">Persentase Kemenangan:</label>
           <input
             type="range"
@@ -145,24 +145,26 @@ const SlotMachine = () => {
           <p className="items-center justify-center flex">{winPercentage}%</p>
         </div>
         <div>
-          <button
-            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-700 focus:outline-none hover:scale-105 hover:z-10 bg-black text-white p-4 rounded-full border-b-8 border-gray-300"
-            onClick={handleSpinClick}
-            disabled={isSpinning}
-          >
-            {isSpinning ? (
-              <div className="mt-2 sm:mt-4">
-                <FadeLoader
-                  size={16}
-                  color={"#ffffff"}
-                  loading={isSpinning}
-                  className="ml-2 sm:ml-4 mb-1 sm:mb-2 mr-1"
-                />
-              </div>
-            ) : (
-              `Putar (Saldo: Rp. ${saldo.toLocaleString()})`
-            )}
-          </button>
+          <div className="flex flex-col   items-center justify-center">
+            <button
+              className="mb-4 flex  px-4 py-2 bg-black text-white rounded hover:bg-gray-700 focus:outline-none hover:scale-105 hover:z-10 bg-black text-white p-4 rounded-full border-b-8 border-gray-300"
+              onClick={handleSpinClick}
+              disabled={isSpinning}
+            >
+              {isSpinning ? (
+                <div className="mt-2 sm:mt-4 mb-4 flex  items-center justify-center">
+                  <FadeLoader
+                    size={16}
+                    color={"#ffffff"}
+                    loading={isSpinning}
+                    className="ml-2 sm:ml-4 mb-1 sm:mb-2 mr-1"
+                  />
+                </div>
+              ) : (
+                `Putar (Saldo: Rp. ${saldo.toLocaleString()})`
+              )}
+            </button>
+          </div>
         </div>
         <div className="mt-4">
           {showWinnerAlert && (
