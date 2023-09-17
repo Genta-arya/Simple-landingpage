@@ -11,6 +11,7 @@ import DetailNotFound from "./View/Home/Component/NotFound";
 import JobListing from "./View/Jobs/Index";
 import Jobs from "./View/Jobs/Index";
 import SplashScreen from "./View/Splash";
+import SlotGame from "./View/Slot/Index";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/slot" element={<SlotGame/>} />
           <Route path="*" element={<DetailNotFound />} />
         </Routes>
       )}
