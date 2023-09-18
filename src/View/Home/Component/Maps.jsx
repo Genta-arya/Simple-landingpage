@@ -63,7 +63,7 @@ const ContactMap = () => {
             icon={customIcon}
             eventHandlers={{ click: handleMarkerClick }}
           >
-            <Popup>STARBOY Company</Popup>
+            <Popup>OmYoo Company</Popup>
           </Marker>
         </MapContainer>
       )}
