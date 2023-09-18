@@ -39,7 +39,7 @@ function Header() {
                 width: "100%",
                 height: "auto",
                 maxHeight: "500px",
-                opacity:0.9,
+                filter: "brightness(35%)",
               }}
             />
           </div>
