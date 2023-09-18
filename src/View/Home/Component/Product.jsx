@@ -24,7 +24,7 @@ function ProductLayout() {
   }, []);
 
   const sendWhatsAppMessage = (product) => {
-    const websiteURL = "https://starboy-studio.vercel.app/";
+    const websiteURL = "https://omyoo-studio.vercel.app/";
     const message = `Hai, saya ingin memesan produk ${product.title} dengan detail sebagai berikut:
   
   Store: ${websiteURL}
