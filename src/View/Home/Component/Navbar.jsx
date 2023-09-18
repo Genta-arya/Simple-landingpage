@@ -153,7 +153,7 @@ function Navbar() {
           Jobs
         </Link>
         <Link
-            to="/slot"
+            to="/game"
             className="text-white hover:text-gray-300 py-2 px-4 block md:inline-block hover:border-b-2 border-white "
           >
             Games
