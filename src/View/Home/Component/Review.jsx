@@ -11,7 +11,7 @@ const customerReviews = [
     name: "Tegar Tri",
     rating: 5,
     comment:
-      "I am very satisfied with the photography results from Starboy Studio. They are truly professional, and the results are outstanding!",
+      "I am very satisfied with the photography results from OmYoo Studio. They are truly professional, and the results are outstanding!",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const customerReviews = [
     name: "Adhe Gondrong",
     rating: 5,
     comment:
-      "Starboy Studio is the best choice for photography. I highly recommend them!",
+      "OmYoo Studio is the best choice for photography. I highly recommend them!",
   },
 ];
 
