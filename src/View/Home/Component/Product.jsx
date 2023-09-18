@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../../../Style/Content.css";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+
 function ProductLayout() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -16,11 +17,30 @@ function ProductLayout() {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Cleanup event listener
+   
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const sendWhatsAppMessage = (product) => {
+    const websiteURL = "https://starboy-studio.vercel.app/";
+    const message = `Hai, saya ingin memesan produk ${product.title} dengan detail sebagai berikut:
+  
+  Store: ${websiteURL}
+  Nama Produk: ${product.title}
+  Deskripsi: ${product.description}
+  Harga: ${product.price}
+  
+  Silakan konfirmasi pesanan ini.`;
+
+    const phoneNumber = "6282220082754";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.location.href = whatsappURL;
+  };
 
   return (
     <div
@@ -52,17 +72,15 @@ function ProductLayout() {
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
               <p className="text-lg font-semibold">{product.price}</p>
-              <ScrollLink
-                to="contactSection"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={2500}
+              <a
+                onClick={() => sendWhatsAppMessage(product)}
                 className="bg-gray-700 text-white px-4 py-2 mt-2 rounded-md hover:bg-gray-800 text-center block mb-8"
                 style={{ cursor: "pointer" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Order Now
-              </ScrollLink>
+              </a>
             </div>
           ))}
         </Carousel>
@@ -81,17 +99,15 @@ function ProductLayout() {
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
               <p className="text-lg font-semibold">{product.price}</p>
-              <ScrollLink
-                to="contactSection"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={2500}
+              <a
+                onClick={() => sendWhatsAppMessage(product)}
                 className="bg-gray-700 text-white px-4 py-2 mt-4 rounded-md hover:bg-gray-800 absolute bottom-4 right-4 animate-none hover:scale-110 transition-all delay-75"
                 style={{ cursor: "pointer" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Order Now
-              </ScrollLink>
+              </a>
             </div>
           ))}
         </div>

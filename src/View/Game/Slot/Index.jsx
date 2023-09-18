@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "../../Style/Slot.css";
-import "../../Style/Content.css";
+import "../../../Style/Slot.css"
+import "../../../Style/Content.css"
 import { FadeLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import HeaderJob from "../../Jobs/Component/Header";
 const SlotMachine = () => {
   const [slotItems, setSlotItems] = useState([
     "🍒",
@@ -91,17 +92,18 @@ const SlotMachine = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-300">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
       <div className="w-full sm:w-auto p-12 mx-4 bg-white rounded-3xl shadow-2xl">
-        <Link to="/" className="text-blue-600 text-lg absolute top-2 left-5 ">
+        <Link to="/game" className="text-blue-600 text-lg absolute top-2 left-5 ">
           <FontAwesomeIcon
             icon={faArrowLeft}
             color="white"
             size="1x"
             className="bg-gray-600 rounded-full p-2 hover:scale-110 hover:z-10 drop-shadow-2xl shadow-2xl"
           />
+      
         </Link>
-        <h1 className=" flex flex-col text-3xl font-bold mb-4 bg-black text-white justify-center items-center p-4 rounded-full border-b-8 border-gray-300">
+        <h1 className=" flex flex-col text-3xl font-bold mb-4 bg-black hover:z-10 hover:scale-105 text-white justify-center items-center p-4 rounded-full border-b-8 border-gray-300">
           Simulasi Slot Machine Game
         </h1>
         <div className="flex  items-center justify-center gap-4 sm:gap-9 mb-6 sm:mb-10 border-2 border-black p-6 sm:p-10 shine">
@@ -147,7 +149,7 @@ const SlotMachine = () => {
         <div>
           <div className="flex flex-col   items-center justify-center">
             <button
-              className="mb-4 flex  px-4 py-2 bg-black text-white rounded hover:bg-gray-700 focus:outline-none hover:scale-105 hover:z-10 bg-black text-white p-4 rounded-full border-b-8 border-gray-300"
+              className="mb-4 flex  px-4 py-2 bg-black text-white rounded hover:bg-gray-700 focus:outline-none hover:scale-105 hover:z-50 bg-black text-white p-4 rounded-full border-b-8 border-gray-300 shadow-2xl"
               onClick={handleSpinClick}
               disabled={isSpinning}
             >

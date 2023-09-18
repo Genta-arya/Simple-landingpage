@@ -1,8 +1,9 @@
-import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { useState, useEffect } from "react";
 
 function ProjectContent() {
+  const [carouselIndex, setCarouselIndex] = useState(0);
   function getRandomImageURL(width, height) {
     const imageId = Math.floor(Math.random() * 1084) + 1;
     return `https://picsum.photos/id/${imageId}/${width}/${height}`;
@@ -44,15 +45,17 @@ function ProjectContent() {
           </div>
         </div>
 
-      
         <div className="md:hidden">
           <Carousel
             showThumbs={false}
             showStatus={false}
             infiniteLoop={true}
-            swipeable={true}
             emulateTouch={true}
             className="mobile-carousel"
+            selectedItem={carouselIndex}
+            onChange={setCarouselIndex}
+            autoPlay={true}
+            interval={3000} 
           >
             {imageUrls.map((imageUrl, index) => (
               <div key={index} className="bg-gray-200 p-4 rounded-lg">

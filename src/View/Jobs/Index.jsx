@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Element, animateScroll as scroll, scroller } from "react-scroll";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Home/Component/Footer";
 import HeaderJob from "./Component/Header";
 import { FaShare } from "react-icons/fa";
@@ -113,6 +110,8 @@ const JobList = () => {
       alert("Sharing is not supported on this browser.");
     }
   };
+
+ 
 
   return (
     <div>
