@@ -19,14 +19,14 @@ const GameList = () => {
       title: "Simulasi Slot Machine Game",
 
       imageURL: game1,
-      url: "http://localhost:3000/slot",
+      url: "https://omyoo-studio.vercel.app/slot",
     },
     {
       id: 1,
       title: "Quiz Game",
 
       imageURL: game2,
-      url: "http://localhost:3000/quiz",
+      url: "https://omyoo-studio.vercel.app/quiz",
     },
   ];
 
