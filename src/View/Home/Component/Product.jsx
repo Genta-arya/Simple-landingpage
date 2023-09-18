@@ -34,7 +34,7 @@ function ProductLayout() {
   
   Silakan konfirmasi pesanan ini.`;
 
-    const phoneNumber = "6282220082754";
+    const phoneNumber = "6289680768061";
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;

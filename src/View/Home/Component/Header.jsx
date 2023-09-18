@@ -47,7 +47,7 @@ function Header() {
       </Slider>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
         <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-2 md:mb-4 lg:mb-6 m-5">
-          STARBOY Photography Studio
+          OmYoo Photography Studio
         </h1>
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-4 md:mb-6 lg:mb-8">
           Capturing Memories, One Click at a Time.

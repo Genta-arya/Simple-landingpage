@@ -43,7 +43,7 @@ function Navbar() {
           <Link to="/" className="text-white hover:text-yellow-300">
             <FontAwesomeIcon icon={faStar} className="mr-2" style={starStyle} />{" "}
             <span className="text-shimmer text-lg font-bold">
-              STARBOY STUDIO
+              OmYoo STUDIO
             </span>
           </Link>
 

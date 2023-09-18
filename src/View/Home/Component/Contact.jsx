@@ -23,7 +23,7 @@ function ContactLinks() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-5">
           <a
-            href="mailto:starryboy@email.com"
+            href="mailto:arionovrian192@gmail.com"
             className="text-white hover:text-gray-400 flex items-center transition-transform transform hover:scale-105 hover:z-10"
           >
             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
@@ -31,7 +31,7 @@ function ContactLinks() {
           </a>
 
           <a
-            href="https://wa.me/6282220082754"
+            href="https://wa.me/6289680768061"
             className="text-white hover:text-gray-400 flex items-center mr-5 transition-transform transform hover:scale-105 hover:z-10"
           >
             <FontAwesomeIcon icon={faWhatsapp} className="mr-2" />
@@ -39,7 +39,7 @@ function ContactLinks() {
           </a>
 
           <a
-            href="https://www.instagram.com/starboyzzz"
+            href="https://www.instagram.com/nvrn_a/"
             className="text-white hover:text-gray-400 flex items-center transition-transform transform hover:scale-105 hover:z-10"
           >
             <FontAwesomeIcon icon={faInstagram} className="mr-2" />
