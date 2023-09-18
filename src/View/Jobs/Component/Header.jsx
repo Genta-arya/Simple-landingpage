@@ -10,7 +10,7 @@ const HeaderJob = () => {
         <Link to="/" className="text-white">
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2 fa-lg" /> {/* Added fa-lg class */}
         </Link>
-        <h1 className="text-2xl font-semibold ml-4">STARBOY Find Jobs</h1>
+        <h1 className="text-2xl font-semibold ml-4">OmYoo Find Jobs</h1>
       </div>
     </div>
   );
