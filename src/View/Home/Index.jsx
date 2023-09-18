@@ -6,12 +6,10 @@ import ContactLinks from "./Component/Contact";
 import ProjectContent from "./Component/Gallery";
 import Content from "./Component/Content";
 import { Element, animateScroll as scroll, scroller } from "react-scroll";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import ProductLayout from "./Component/Product";
+
 import FloatingMessageButton from "./Component/FNQ";
 import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion"; // Import Framer Motion components
+import { motion, useAnimation } from "framer-motion"; 
 
 function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -47,9 +45,7 @@ function Home() {
     });
   };
 
-  const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
+ 
 
   const [contentRef, contentInView] = useInView({
     triggerOnce: true,
@@ -85,7 +81,7 @@ function Home() {
     }
   }, [contactInView, contactControls]);
 
-  // Define animation variants
+
   const contentVariant = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
@@ -93,12 +89,12 @@ function Home() {
 
   const projectVariant = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 2 } },
   };
 
   const contactVariant = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 2 } },
   };
 
   return (
