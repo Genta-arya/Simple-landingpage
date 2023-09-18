@@ -6,9 +6,11 @@ import { FaShare } from "react-icons/fa";
 
 import Footer from "../Home/Component/Footer";
 
+import HeaderGame from "./Component/Header";
+
+
 import game1 from "../../Asset/game1.png";
 import game2 from "../../Asset/game2.png";
-import HeaderGame from "./Component/Header";
 
 const GameList = () => {
   const games = [
@@ -16,14 +18,14 @@ const GameList = () => {
       id: 1,
       title: "Simulasi Slot Machine Game",
 
-      imageURL: "game1.jpg",
+      imageURL: game1,
       url: "http://localhost:3000/slot",
     },
     {
       id: 1,
       title: "Quiz Game",
 
-      imageURL: "game2.jpg",
+      imageURL: game2,
       url: "http://localhost:3000/quiz",
     },
   ];
@@ -54,7 +56,7 @@ const GameList = () => {
               <div className="card-inner">
                 <div className="card-face">
                   <img
-                    src={game1}
+                    src={game.imageURL}
                     alt="Game Image"
                     className="w-full h-100 rounded-lg mx-auto"
                   />
