@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { sendWhatsAppMessage } from "../../../Service/API";
 import sukses from "../../../Asset/sukses.png";
 import formatRupiah from "../../../Utils/Format";
-import { useOrderContext } from "../../../Utils/GlobalState";
+
 
 function SuccessPage() {
   const location = useLocation();

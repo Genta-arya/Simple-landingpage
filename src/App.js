@@ -18,6 +18,7 @@ import QuizApp from "./View/Game/Quiz/Index";
 import FormOrder from "./View/Order";
 import SuccessPage from "./View/Order/Component/sukses";
 import FailedPage from "./View/Order/Component/Failed";
+import Success from "./View/Order/Component/succes";
 
 
 function App() {
@@ -41,7 +42,8 @@ function App() {
           <Route path="/quiz" element={<QuizApp />} />
           <Route path="/game" element={<GameList />} />
           <Route path="/form-order" element={<FormOrder />} />
-          <Route path="/sukses" element={<SuccessPage />} />
+          <Route path="/sukses-order" element={<SuccessPage />} />
+          <Route path="/sukses" element={<Success />} />
           <Route path="/gagal" element={<FailedPage />} />
           <Route path="*" element={<DetailNotFound />} />
         </Routes>

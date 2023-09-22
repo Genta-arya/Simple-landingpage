@@ -5,8 +5,6 @@ import HeaderOrder from "./Component/Navbar";
 import formatRupiah from "../../Utils/Format";
 import CustomAlert from "./Component/CustomeAlert";
 
-
-
 function FormOrder() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,7 +12,6 @@ function FormOrder() {
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertTime, setShowAlertTime] = useState(false);
   const [loading, setLoading] = useState(false);
-
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -132,11 +129,8 @@ function FormOrder() {
         const midtransResponse = await response.json();
         const { redirectUrl } = midtransResponse;
 
-       
-        navigate("/sukses", { state: { orderData } });
-       
+        navigate("/sukses-order", { state: { orderData } });
 
-       
         window.open(redirectUrl, "_blank");
       } else {
         console.error("Error placing order");
