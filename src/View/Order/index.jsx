@@ -4,6 +4,7 @@ import { API_ENDPOINTS } from "../../Service/API";
 import HeaderOrder from "./Component/Navbar";
 import formatRupiah from "../../Utils/Format";
 import CustomAlert from "./Component/CustomeAlert";
+import { useOrderData } from "../../Utils/GlobalState";
 
 function FormOrder() {
   const navigate = useNavigate();
@@ -11,7 +12,8 @@ function FormOrder() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertTime, setShowAlertTime] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
+  const { setOrder } = useOrderData();
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -100,10 +102,10 @@ function FormOrder() {
     }
   };
 
-  
   const handleOrderButtonClick = async () => {
+    setLoading(true);
     if (!isFormValid) return;
-  
+
     const orderData = {
       id_product: productData.id,
       nm_product: productData.title,
@@ -115,7 +117,7 @@ function FormOrder() {
       date: formData.tanggal,
       time: formData.waktu,
     };
-  
+
     try {
       const response = await fetch(`${API_ENDPOINTS.ORDER}`, {
         method: "POST",
@@ -124,32 +126,31 @@ function FormOrder() {
         },
         body: JSON.stringify(orderData),
       });
-  
+
       if (response.ok) {
         const midtransResponse = await response.json();
         const { redirectUrl } = midtransResponse;
-        navigate("/sukses", { state: { orderData } });
-        
-  
-        window.open(redirectUrl, "_blank");
+
+        setOrder(orderData);
+
+        window.location.href = redirectUrl;
       } else {
         console.error("Error placing order");
         console.log("ini data order : ", orderData);
-        
-       
+
         setShowAlert(true);
       }
     } catch (error) {
       console.error("Failed to place order:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleCloseAlert = () => {
-    setShowAlertTime(false); // Hide the alert when it's closed
-    setShowAlert(false); // Hide the alert when it's closed
+    setShowAlertTime(false);
+    setShowAlert(false);
   };
-
-  
 
   return (
     <div>
@@ -269,14 +270,12 @@ function FormOrder() {
                   <CustomAlert
                     message="Sorry , but our service is only available from 10:00 AM to 4:00 PM (10:00 to 16:00)."
                     onClose={handleCloseAlert}
-                    
                   />
                 )}
-                 {showAlert && (
+                {showAlert && (
                   <CustomAlert
                     message="Sorry, the service is currently unavailable during that time. For further assistance, please contact us through the 'Contact Us' section."
                     onClose={handleCloseAlert}
-                    
                   />
                 )}
               </div>
@@ -293,18 +292,27 @@ function FormOrder() {
                   required
                 ></textarea>
               </div>
-              <button
-                type="button"
-                onClick={handleOrderButtonClick}
-                className={`${
-                  isFormValid
-                    ? "bg-gray-900 hover:bg-gray-600 hover:scale-110 transition-all delay-75"
-                    : "bg-gray-300 cursor-not-allowed"
-                } text-white px-4 py-2 rounded-md`}
-                disabled={!isFormValid}
-              >
-                Order Now
-              </button>
+
+              {loading ? (
+                <div className="loader-container ">
+                  <div className="custom-loader">
+                    <div className="loader" />
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleOrderButtonClick}
+                  className={`${
+                    isFormValid
+                      ? "bg-gray-900 hover:bg-gray-600 hover:scale-110 transition-all delay-75"
+                      : "bg-gray-300 cursor-not-allowed"
+                  } text-white px-4 py-2 rounded-md`}
+                  disabled={!isFormValid}
+                >
+                  Order Now
+                </button>
+              )}
             </form>
           </>
         ) : null}

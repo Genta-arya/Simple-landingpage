@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sendWhatsAppMessage } from "../../../Service/API";
 import sukses from "../../../Asset/sukses.png";
@@ -8,32 +8,30 @@ function SuccessPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [orderData, setOrder] = useState(null);
+
   useEffect(() => {
-    if (!location.state || !location.state.orderData) {
+    const orderData = location.state ? location.state.orderData : null;
+    if (!orderData) {
       navigate("/");
+    } else {
+      setOrder(orderData);
     }
   }, [location.state, navigate]);
-
-  const orderData = location.state ? location.state.orderData : null;
 
   if (!orderData) {
     return null;
   }
-
   const handleContactAdminClick = () => {
     sendWhatsAppMessage(orderData);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-600 p-12">
-      <div className="bg-white p-8 rounded shadow-md text-center border-8 border-green-800 p-1 flex flex-col items-center">
+      <div className="bg-white  rounded shadow-md text-center border-8 border-green-800 p-1 flex flex-col items-center">
         <h1 className="text-3xl font-semibold mb-4">Order Successful!</h1>
         <div className="flex items-center justify-center mb-4">
-          <img
-            src={sukses}
-            alt="Success"
-            className="w-40 h-50" 
-          />
+          <img src={sukses} alt="Success" className="w-40 h-50" />
         </div>
         <p className="text-gray-600">
           Thank you for your order. Your order will be processed shortly.
@@ -49,8 +47,12 @@ function SuccessPage() {
 
           <div className="flex flex-wrap justify-center">
             <div className="w-full sm:w-1/2 px-4">
-              <p className="text-gray-700 mb-2">Product Name: {orderData.nm_product}</p>
-              <p className="text-gray-700 mb-2">Price: {formatRupiah(orderData.price)}</p>
+              <p className="text-gray-700 mb-2">
+                Product Name: {orderData.nm_product}
+              </p>
+              <p className="text-gray-700 mb-2">
+                Price: {formatRupiah(orderData.price)}
+              </p>
               <p className="text-gray-700 mb-2">Name: {orderData.name}</p>
               <p className="text-gray-700 mb-2">Contact: {orderData.contact}</p>
             </div>
