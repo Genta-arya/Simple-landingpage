@@ -8,7 +8,6 @@ import Footer from "../Home/Component/Footer";
 
 import HeaderGame from "./Component/Header";
 
-
 import game1 from "../../Asset/game1.png";
 import game2 from "../../Asset/game2.png";
 
@@ -67,7 +66,6 @@ const GameList = () => {
                 <div className="card-face card-back">
                   <Link
                     to={game.url}
-                  
                     rel="noopener noreferrer"
                     className="block w-full text-center bg-gray-700 text-white py-2 rounded hover:bg-gray-800"
                   >

@@ -3,11 +3,13 @@ import products from "../../../Model/ProductData";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../../../Style/Content.css";
-import { Link } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
+
+import { useNavigate } from "react-router-dom";
+import formatRupiah from "../../../Utils/Format";
 
 function ProductLayout() {
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,25 +25,9 @@ function ProductLayout() {
     };
   }, []);
 
-  const sendWhatsAppMessage = (product) => {
-    const websiteURL = "https://omyoo-studio.vercel.app/";
-    const message = `Hai, saya ingin memesan produk ${product.title} dengan detail sebagai berikut:
-  
-  Store: ${websiteURL}
-  Nama Produk: ${product.title}
-  Deskripsi: ${product.description}
-  Harga: ${product.price}
-  
-  Silakan konfirmasi pesanan ini.`;
-
-    const phoneNumber = "6289680768061";
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    window.location.href = whatsappURL;
+  const handleOrderClick = async (product) => {
+    navigate("/form-order", { state: { productData: product } });
   };
-
   return (
     <div
       className="container mx-auto mt-12 bg-gray-200 rounded-full p-8 border-2 pb-16"
@@ -71,9 +57,9 @@ function ProductLayout() {
               />
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
-              <p className="text-lg font-semibold">{product.price}</p>
+              <p className="text-lg font-semibold">{formatRupiah(product.price)}</p>
               <a
-                onClick={() => sendWhatsAppMessage(product)}
+                onClick={() => handleOrderClick(product)}
                 className="bg-gray-700 text-white px-4 py-2 mt-2 rounded-md hover:bg-gray-800 text-center block mb-8"
                 style={{ cursor: "pointer" }}
                 target="_blank"
@@ -98,9 +84,9 @@ function ProductLayout() {
               />
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
-              <p className="text-lg font-semibold">{product.price}</p>
+              <p className="text-lg font-semibold">{formatRupiah(product.price)}</p>
               <a
-                onClick={() => sendWhatsAppMessage(product)}
+                onClick={() => handleOrderClick(product)}
                 className="bg-gray-700 text-white px-4 py-2 mt-4 rounded-md hover:bg-gray-800 absolute bottom-4 right-4 animate-none hover:scale-110 transition-all delay-75"
                 style={{ cursor: "pointer" }}
                 target="_blank"
