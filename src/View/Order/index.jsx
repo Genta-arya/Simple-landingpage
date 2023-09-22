@@ -4,7 +4,8 @@ import { API_ENDPOINTS } from "../../Service/API";
 import HeaderOrder from "./Component/Navbar";
 import formatRupiah from "../../Utils/Format";
 import CustomAlert from "./Component/CustomeAlert";
-import { useOrderData } from "../../Utils/GlobalState";
+
+
 
 function FormOrder() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function FormOrder() {
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertTime, setShowAlertTime] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { setOrder } = useOrderData();
+
 
   const [formData, setFormData] = useState({
     nama: "",
@@ -131,9 +132,12 @@ function FormOrder() {
         const midtransResponse = await response.json();
         const { redirectUrl } = midtransResponse;
 
-        setOrder(orderData);
+       
+        navigate("/sukses", { state: { orderData } });
+       
 
-        window.location.href = redirectUrl;
+       
+        window.open(redirectUrl, "_blank");
       } else {
         console.error("Error placing order");
         console.log("ini data order : ", orderData);

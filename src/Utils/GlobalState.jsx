@@ -1,22 +1,22 @@
 
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-const OrderDataContext = createContext();
+const OrderContext = createContext();
 
-export function useOrderData() {
-  return useContext(OrderDataContext);
-}
+export const useOrderContext = () => {
+  return useContext(OrderContext);
+};
 
-export function OrderDataProvider({ children }) {
-  const [orderData, setOrderData] = useState(null);
+export const OrderProvider = ({ children }) => {
+  const [order, setOrder] = useState(null);
 
-  const setOrder = (data) => {
-    setOrderData(data);
+  const setGlobalOrder = (orderData) => {
+    setOrder(orderData);
   };
 
   return (
-    <OrderDataContext.Provider value={{ orderData, setOrder }}>
+    <OrderContext.Provider value={{ order, setGlobalOrder }}>
       {children}
-    </OrderDataContext.Provider>
+    </OrderContext.Provider>
   );
-}
+};

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sendWhatsAppMessage } from "../../../Service/API";
 import sukses from "../../../Asset/fail.png";
@@ -7,17 +7,14 @@ import formatRupiah from "../../../Utils/Format";
 function FailedPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [orderData, setOrder] = useState(null);
 
   useEffect(() => {
-    const orderData = location.state ? location.state.orderData : null;
-    if (!orderData) {
+    if (!location.state || !location.state.orderData) {
       navigate("/");
-    } else {
-
-      setOrder(orderData);
     }
   }, [location.state, navigate]);
+
+  const orderData = location.state ? location.state.orderData : null;
 
   if (!orderData) {
     return null;

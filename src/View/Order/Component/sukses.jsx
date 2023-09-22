@@ -3,27 +3,28 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { sendWhatsAppMessage } from "../../../Service/API";
 import sukses from "../../../Asset/sukses.png";
 import formatRupiah from "../../../Utils/Format";
+import { useOrderContext } from "../../../Utils/GlobalState";
 
 function SuccessPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [orderData, setOrder] = useState(null);
+  const [order, setOrder] = useState(null);
 
   useEffect(() => {
     const orderData = location.state ? location.state.orderData : null;
     if (!orderData) {
-      navigate("/");
+      navigate("/sukses");
     } else {
       setOrder(orderData);
     }
   }, [location.state, navigate]);
 
-  if (!orderData) {
+  if (!order) {
     return null;
   }
   const handleContactAdminClick = () => {
-    sendWhatsAppMessage(orderData);
+    sendWhatsAppMessage(order);
   };
 
   return (
@@ -48,19 +49,19 @@ function SuccessPage() {
           <div className="flex flex-wrap justify-center">
             <div className="w-full sm:w-1/2 px-4">
               <p className="text-gray-700 mb-2">
-                Product Name: {orderData.nm_product}
+                Product Name: {order.nm_product}
               </p>
               <p className="text-gray-700 mb-2">
-                Price: {formatRupiah(orderData.price)}
+                Price: {formatRupiah(order.price)}
               </p>
-              <p className="text-gray-700 mb-2">Name: {orderData.name}</p>
-              <p className="text-gray-700 mb-2">Contact: {orderData.contact}</p>
+              <p className="text-gray-700 mb-2">Name: {order.name}</p>
+              <p className="text-gray-700 mb-2">Contact: {order.contact}</p>
             </div>
             <div className="w-full sm:w-1/2 px-4">
-              <p className="text-gray-700 mb-2">Email: {orderData.email}</p>
-              <p className="text-gray-700 mb-2">Address: {orderData.address}</p>
-              <p className="text-gray-700 mb-2">Time: {orderData.time}</p>
-              <p className="text-gray-700 mb-2">Date: {orderData.date}</p>
+              <p className="text-gray-700 mb-2">Email: {order.email}</p>
+              <p className="text-gray-700 mb-2">Address: {order.address}</p>
+              <p className="text-gray-700 mb-2">Time: {order.time}</p>
+              <p className="text-gray-700 mb-2">Date: {order.date}</p>
             </div>
           </div>
         </div>
