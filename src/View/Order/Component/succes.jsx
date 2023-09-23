@@ -5,7 +5,7 @@ import sukses from "../../../Asset/sukses.png";
 function Success() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-600 p-12">
-      <div className="bg-white  rounded shadow-md text-center border-8 border-green-800 p-12 flex flex-col items-center">
+      <div className="bg-white  rounded-xl  text-center  p-12 flex flex-col items-center shadow-2xl drop-shadow-2xl shadow-green-800">
         <h1 className="text-3xl font-semibold mb-4">Payment Successful!</h1>
         <div className="flex items-center justify-center mb-4">
           <img src={sukses} alt="Success" className="w-40 h-50" />

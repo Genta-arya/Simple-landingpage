@@ -20,7 +20,7 @@ function FailedPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-600 p-12">
-      <div className="bg-white p-8 rounded shadow-md text-center border-8 border-red-800  flex flex-col items-center">
+      <div className="bg-white  rounded-xl text-center  p-12 flex flex-col items-center shadow-2xl drop-shadow-2xl shadow-red-800">
         <h1 className="text-3xl font-semibold mb-4">Payment Failed</h1>
         <div className="flex items-center justify-center mb-4">
           <img src={sukses} alt="Success" className="w-40 h-50" />

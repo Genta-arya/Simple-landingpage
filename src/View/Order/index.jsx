@@ -4,6 +4,9 @@ import { API_ENDPOINTS } from "../../Service/API";
 import HeaderOrder from "./Component/Navbar";
 import formatRupiah from "../../Utils/Format";
 import CustomAlert from "./Component/CustomeAlert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import Footer from "../Home/Component/Footer";
 
 function FormOrder() {
   const navigate = useNavigate();
@@ -29,6 +32,7 @@ function FormOrder() {
   }, [location.state, navigate]);
 
   const productData = location.state ? location.state.productData : null;
+  console.log(productData);
 
   const handleNamaChange = (event) => {
     const nama = event.target.value;
@@ -153,28 +157,50 @@ function FormOrder() {
   return (
     <div>
       <HeaderOrder />
-      <div className="container mx-auto mt-6 p-12">
+      <div className="container mx-auto  p-12 ">
         {productData ? (
           <>
-            <div className="border-b-2 border-black p-4 mb-8">
+            <div className="border-b-2 border-gray-400 p-4 mb-8">
               <h2 className="text-3xl font-semibold mb-4 text-white bg-black shine p-4 rounded-full w-60">
                 Your Package :{" "}
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-b-2 border-black  ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-b-2 border-gray-400 ">
               <div className="md:col-span-1 ">
                 <img
                   src={productData.imageUrl}
                   alt={productData.title}
-                  className="w-full rounded-xl mb-8"
+                  className="w-full rounded-2xl mb-8 border-2 border-black hover:scale-95 transition-all delay-150 shadow-2xl drop-shadow-2xl shadow-slate-900"
                 />
               </div>
               <div className="md:col-span-1">
-                <h3 className="text-xl font-semibold mb-2">
+                <h3 className="text-2xl font-bold mb-2 ">
                   {productData.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{productData.description}</p>
-                <p className="text-lg font-semibold">
+                <ul className="flex flex-col space-y-2 mt-4">
+                  {productData.features.map((benefitsGroup, index) => (
+                    <li key={index}>
+                      <h3 className="font-semibold">Benefits:</h3>
+                      <ul className="ml-4 space-y-1">
+                        {benefitsGroup.map((benefit, benefitIndex) => (
+                          <li
+                            key={benefitIndex}
+                            className="flex items-center space-x-2"
+                          >
+                            <FontAwesomeIcon
+                              icon={faCheckCircle}
+                              className="text-green-500"
+                            />
+                            <span className=" p-2">{benefit}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="text-gray-600 mb-4 mt-4">{productData.description}</p>
+                <p className="text-lg font-semibold mb-4">
                   Price: {formatRupiah(productData.price)}
                 </p>
               </div>
@@ -186,7 +212,7 @@ function FormOrder() {
               </p>
             </div>
 
-            <form className="mt-6 p-5 border border-black rounded-lg">
+            <form className="mt-6 p-5 border border-gray-400 rounded-lg">
               <div className="mb-4 mt-6">
                 <label htmlFor="nama" className="block text-gray-600">
                   Name:
@@ -195,6 +221,7 @@ function FormOrder() {
                   type="text"
                   id="nama"
                   name="nama"
+                  placeholder="Enter your name here"
                   className="border border-gray-300 px-3 py-2 rounded-md w-full"
                   onChange={handleNamaChange}
                   required
@@ -211,6 +238,7 @@ function FormOrder() {
                   className="border border-gray-300 px-3 py-2 rounded-md w-full"
                   onChange={handleKontakChange}
                   required
+                  placeholder="Enter your contact here"
                   pattern="[0-9]*"
                   title="Kontak hanya boleh diisi dengan angka"
                 />
@@ -227,6 +255,7 @@ function FormOrder() {
                     formData.emailError ? "border-red-500" : ""
                   }`}
                   onChange={handleEmailChange}
+                  placeholder="example@email.com"
                   required
                   title="Email tidak valid"
                 />
@@ -279,12 +308,13 @@ function FormOrder() {
               </div>
 
               <div className="mb-4">
-                <label htmlFor="alamat" className="block text-gray-600">
+                <label htmlFor="alamat" className="block text-gray-600 ">
                   Address:
                 </label>
                 <textarea
                   id="alamat"
                   name="alamat"
+                  placeholder="Enter your address here"
                   className="border border-gray-300 px-3 py-2 rounded-md w-full"
                   onChange={handleAlamatChange}
                   required
@@ -298,23 +328,26 @@ function FormOrder() {
                   </div>
                 </div>
               ) : (
-                <button
-                  type="button"
-                  onClick={handleOrderButtonClick}
-                  className={`${
-                    isFormValid
-                      ? "bg-gray-900 hover:bg-gray-600 hover:scale-110 transition-all delay-75"
-                      : "bg-gray-300 cursor-not-allowed"
-                  } text-white px-4 py-2 rounded-md`}
-                  disabled={!isFormValid}
-                >
-                  Order Now
-                </button>
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleOrderButtonClick}
+                    className={`${
+                      isFormValid
+                        ? "bg-gray-900 hover:bg-gray-600 hover:scale-110 transition-all delay-75"
+                        : "bg-gray-300 cursor-not-allowed"
+                    } text-white px-4 py-2 rounded-md`}
+                    disabled={!isFormValid}
+                  >
+                    Order Now
+                  </button>
+                </div>
               )}
             </form>
           </>
         ) : null}
       </div>
+      <Footer />
     </div>
   );
 }

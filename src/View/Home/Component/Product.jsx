@@ -27,6 +27,7 @@ function ProductLayout() {
 
   const handleOrderClick = async (product) => {
     navigate("/form-order", { state: { productData: product } });
+    
   };
   return (
     <div
