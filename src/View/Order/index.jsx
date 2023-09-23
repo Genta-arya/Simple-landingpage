@@ -165,7 +165,7 @@ function FormOrder() {
                 Your Package :{" "}
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-b-2 border-gray-400 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 border-b-2 border-gray-400 ">
               <div className="md:col-span-1 ">
                 <img
                   src={productData.imageUrl}
