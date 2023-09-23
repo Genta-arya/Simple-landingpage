@@ -16,6 +16,7 @@ function FormOrder() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertTime, setShowAlertTime] = useState(false);
+  const [showAlertEmail, setShowAlertEmail] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -55,30 +56,31 @@ function FormOrder() {
     }));
   };
 
-  const handleAlamatChange = (event) => {
-    const alamat = event.target.value;
-    setFormData((prevData) => ({
-      ...prevData,
-      alamat: alamat,
-    }));
-  };
-
   const handleEmailChange = (event) => {
     const email = event.target.value;
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    if (emailPattern.test(email)) {
-      setFormData((prevData) => ({
-        ...prevData,
-        email: email,
-        emailError: "",
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        emailError: "Invalid Email",
-      }));
+    const isValidEmail = emailPattern.test(email);
+    setIsFormValid(isValidEmail); // Set isFormValid based on email validity
+
+    setFormData((prevData) => ({
+      ...prevData,
+      email: email,
+      emailError: isValidEmail ? "" : "Invalid Email",
+    }));
+
+    if (!isValidEmail) {
+      setShowAlertEmail(true);
     }
+  };
+
+  const handleAlamatChange = (event) => {
+    const alamat = event.target.value;
+    setIsFormValid(alamat);
+    setFormData((prevData) => ({
+      ...prevData,
+      alamat: alamat,
+    }));
   };
 
   const handleTanggalChange = (event) => {
@@ -107,7 +109,17 @@ function FormOrder() {
 
   const handleOrderButtonClick = async () => {
     setLoading(true);
-    if (!isFormValid) return;
+    if (
+      !formData.nama ||
+      !/^\d+$/.test(formData.kontak) ||
+      !formData.email ||
+      !formData.alamat ||
+      !formData.tanggal ||
+      !formData.waktu
+    ) {
+      setLoading(false);
+      return;
+    }
 
     const orderData = {
       id_product: productData.id,
@@ -138,7 +150,7 @@ function FormOrder() {
         setGlobalState({
           redirectUrl,
           order_id,
-          orderData: orderData
+          orderData: orderData,
         });
 
         const orderStatusResponse = await fetch(
@@ -155,12 +167,10 @@ function FormOrder() {
             navigate("/pending");
           }
         }
-
-        
       } else {
         console.error("Error placing order");
         console.log("ini data order : ", orderData);
-
+        // setShowAlertEmail(true)
         setShowAlert(true);
       }
     } catch (error) {
@@ -173,6 +183,7 @@ function FormOrder() {
   const handleCloseAlert = () => {
     setShowAlertTime(false);
     setShowAlert(false);
+    setShowAlertEmail(false);
   };
 
   return (
@@ -356,11 +367,25 @@ function FormOrder() {
                     type="button"
                     onClick={handleOrderButtonClick}
                     className={`${
-                      isFormValid
+                      formData.nama &&
+                      /^\d+$/.test(formData.kontak) &&
+                      formData.email &&
+                      formData.alamat &&
+                      formData.tanggal &&
+                      formData.waktu
                         ? "bg-gray-900 hover:bg-gray-600 hover:scale-110 transition-all delay-75"
                         : "bg-gray-300 cursor-not-allowed"
                     } text-white px-4 py-2 rounded-md`}
-                    disabled={!isFormValid}
+                    disabled={
+                      !(
+                        formData.nama &&
+                        /^\d+$/.test(formData.kontak) &&
+                        formData.email &&
+                        formData.alamat &&
+                        formData.tanggal &&
+                        formData.waktu
+                      )
+                    }
                   >
                     Order Now
                   </button>
