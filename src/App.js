@@ -13,13 +13,13 @@ import Jobs from "./View/Jobs/Index";
 import SplashScreen from "./View/Splash";
 import SlotMachine from "./View/Game/Slot/Index";
 import GameList from "./View/Game";
-import "./Style/Animation.css"
+import "./Style/Animation.css";
 import QuizApp from "./View/Game/Quiz/Index";
 import FormOrder from "./View/Order";
-import SuccessPage from "./View/Order/Component/sukses";
+
 import FailedPage from "./View/Order/Component/Failed";
 import Success from "./View/Order/Component/succes";
-
+import Pending from "./View/Order/Component/Pending";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -42,8 +42,9 @@ function App() {
           <Route path="/quiz" element={<QuizApp />} />
           <Route path="/game" element={<GameList />} />
           <Route path="/form-order" element={<FormOrder />} />
-          <Route path="/sukses-order" element={<SuccessPage />} />
+
           <Route path="/sukses" element={<Success />} />
+          <Route path="/pending" element={<Pending />} />
           <Route path="/gagal" element={<FailedPage />} />
           <Route path="*" element={<DetailNotFound />} />
         </Routes>

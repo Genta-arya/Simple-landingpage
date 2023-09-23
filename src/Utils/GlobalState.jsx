@@ -1,22 +1,43 @@
+import React, { createContext, useContext, useReducer } from "react";
 
-import React, { createContext, useContext, useState } from "react";
-
-const OrderContext = createContext();
-
-export const useOrderContext = () => {
-  return useContext(OrderContext);
+// Define the initial state
+const initialState = {
+  redirectUrl: null,
+  order_id: null,
 };
 
-export const OrderProvider = ({ children }) => {
-  const [order, setOrder] = useState(null);
+// Create a context
+const AppContext = createContext();
 
-  const setGlobalOrder = (orderData) => {
-    setOrder(orderData);
+// Create a reducer function
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_GLOBAL_STATE":
+      return {
+        ...state,
+        ...action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+// Create an AppProvider component
+export const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(appReducer, initialState);
+
+  const setGlobalState = (payload) => {
+    dispatch({ type: "SET_GLOBAL_STATE", payload });
   };
 
   return (
-    <OrderContext.Provider value={{ order, setGlobalOrder }}>
+    <AppContext.Provider value={{ state, setGlobalState }}>
       {children}
-    </OrderContext.Provider>
+    </AppContext.Provider>
   );
+};
+
+// Create a custom hook for using the context
+export const useAppContext = () => {
+  return useContext(AppContext);
 };

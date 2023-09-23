@@ -7,9 +7,11 @@ import CustomAlert from "./Component/CustomeAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Home/Component/Footer";
+import { useAppContext } from "../../Utils/GlobalState";
 
 function FormOrder() {
   const navigate = useNavigate();
+  const { setGlobalState } = useAppContext();
   const location = useLocation();
   const [isFormValid, setIsFormValid] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -32,7 +34,6 @@ function FormOrder() {
   }, [location.state, navigate]);
 
   const productData = location.state ? location.state.productData : null;
-  console.log(productData);
 
   const handleNamaChange = (event) => {
     const nama = event.target.value;
@@ -131,9 +132,29 @@ function FormOrder() {
 
       if (response.ok) {
         const midtransResponse = await response.json();
-        const { redirectUrl } = midtransResponse;
+        const { redirectUrl, order_id } = midtransResponse;
+        console.log(midtransResponse);
 
-        navigate("/sukses-order", { state: { orderData } });
+        setGlobalState({
+          redirectUrl,
+          order_id,
+          orderData: orderData
+        });
+
+        const orderStatusResponse = await fetch(
+          `${API_ENDPOINTS.STATUS}/${order_id}`
+        );
+
+        if (orderStatusResponse.ok) {
+          const orderStatusData = await orderStatusResponse.json();
+          const { status } = orderStatusData;
+
+          if (status === "settled") {
+            navigate("/sukses");
+          } else {
+            navigate("/pending");
+          }
+        }
 
         window.open(redirectUrl, "_blank");
       } else {
@@ -199,7 +220,9 @@ function FormOrder() {
                   ))}
                 </ul>
 
-                <p className="text-gray-600 mb-4 mt-4">{productData.description}</p>
+                <p className="text-gray-600 mb-4 mt-4">
+                  {productData.description}
+                </p>
                 <p className="text-lg font-semibold mb-4">
                   Price: {formatRupiah(productData.price)}
                 </p>
