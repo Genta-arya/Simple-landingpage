@@ -13,7 +13,7 @@ const sendWhatsAppMessage = (orderData) => {
     return;
   }
   const websiteURL = "https://omyoo-studio.vercel.app/";
-  const phoneNumber = "6289694773988";
+  const phoneNumber = "6289680768061";
   const message = `Hai, saya ingin memesan produk ${orderData.nm_product} dengan detail sebagai berikut:
     Store: ${websiteURL}
     Nama Produk: ${orderData.nm_product}
