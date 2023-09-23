@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import pendingImage from "../../../Asset/Pending.png";
 import { useAppContext } from "../../../Utils/GlobalState";
-import { useNavigate, useParams } from "react-router-dom"; 
+import { useNavigate, useParams } from "react-router-dom";
 import DetailNotFound from "../../Home/Component/NotFound";
 import { API_ENDPOINTS } from "../../../Service/API";
 
@@ -14,7 +14,6 @@ function Pending() {
 
   useEffect(() => {
     const fetchOrderStatus = () => {
-
       fetch(`${API_ENDPOINTS.STATUS}/${order_id}`)
         .then((response) => response.json())
         .then((data) => {
@@ -22,11 +21,10 @@ function Pending() {
           setOrderStatus(status);
 
           if (status === "settled") {
-            navigate("/sukses"); 
+            navigate("/sukses");
           } else if (status === "canceled" || status === "expired") {
             navigate("/gagal");
-          }
-          else if (status === "pending" ) {
+          } else if (status === "pending") {
             navigate("/pending");
           }
         })
@@ -35,11 +33,9 @@ function Pending() {
         });
     };
 
-   
     const intervalId = setInterval(fetchOrderStatus, 3000);
 
     return () => {
-
       clearInterval(intervalId);
     };
   }, [order_id, navigate]);
@@ -75,6 +71,8 @@ function Pending() {
           {redirectUrl && order_id && (
             <a
               href={redirectUrl}
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="inline-block px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md transition duration-300 mb-4 ml-2"
             >
               Complete Payment

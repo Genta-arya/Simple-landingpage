@@ -156,7 +156,7 @@ function FormOrder() {
           }
         }
 
-        window.open(redirectUrl, "_blank");
+        
       } else {
         console.error("Error placing order");
         console.log("ini data order : ", orderData);
