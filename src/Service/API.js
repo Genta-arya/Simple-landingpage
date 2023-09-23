@@ -1,10 +1,8 @@
 import axios from "axios";
 const API_BASE_URL = process.env.REACT_APP_API_URL;
 
-
 const API_ENDPOINTS = {
   ORDER: `${API_BASE_URL}order`,
-
 };
 
 const sendWhatsAppMessage = (orderData) => {
@@ -14,18 +12,18 @@ const sendWhatsAppMessage = (orderData) => {
   }
   const websiteURL = "https://omyoo-studio.vercel.app/";
   const phoneNumber = "6289680768061";
-  const message = `Hai, saya ingin memesan produk ${orderData.nm_product} dengan detail sebagai berikut:
-    Store: ${websiteURL}
-    Nama Produk: ${orderData.nm_product}
-    Harga: ${orderData.price}
-    Nama: ${orderData.name}
-    Kontak: ${orderData.contact}
-    Email: ${orderData.email}
-    Alamat: ${orderData.address}
-    Jam: ${orderData.time}
-    Tanggal: ${orderData.date}
-
-    Silakan konfirmasi pesanan ini.`;
+  const message = `Hello, I would like to order the product ${orderData.nm_product} with the following details:
+      Store: ${websiteURL}
+      Product Name: ${orderData.nm_product}
+      Price: ${orderData.price}
+      Name: ${orderData.name}
+      Contact: ${orderData.contact}
+      Email: ${orderData.email}
+      Address: ${orderData.address}
+      Time: ${orderData.time}
+      Date: ${orderData.date}
+  
+      Please confirm this order.`;
 
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
@@ -34,4 +32,4 @@ const sendWhatsAppMessage = (orderData) => {
   window.open(whatsappURL, "_blank");
 };
 
-export { sendWhatsAppMessage  , API_ENDPOINTS};
+export { sendWhatsAppMessage, API_ENDPOINTS };
