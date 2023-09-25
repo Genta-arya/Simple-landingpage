@@ -54,7 +54,7 @@ function ProductLayout() {
               <img
                 src={product.imageUrl}
                 alt={product.title}
-                className="w-full h-40 rounded-md mb-4"
+                className="w-full h-48 object-cover rounded-lg mb-4"
               />
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
