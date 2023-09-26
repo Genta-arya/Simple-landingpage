@@ -16,6 +16,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [loginErrorServer, setLoginErrorServer] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] =
@@ -61,6 +62,7 @@ const LoginForm = () => {
         const { token } = response;
 
         setLoginError("");
+        setLoginErrorServer("");
         localStorage.setItem("token", token);
 
         const usernameResponse = await fetch(`${API_ENDPOINTS.CheckUser}`, {
@@ -83,7 +85,7 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.log("Error saat login:", error);
-      setLoginError("Terjadi kesalahan saat login");
+      setLoginErrorServer("Gagal Terhubung Keserver");
     } finally {
       setIsLoading(false);
     }
@@ -271,6 +273,11 @@ const LoginForm = () => {
           {loginError && (
             <p className="text-red-500 text-sm items-center justify-center flex">
               {loginError}
+            </p>
+          )}
+           {loginErrorServer && (
+            <p className="text-red-500 text-sm items-center justify-center flex">
+              {loginErrorServer}
             </p>
           )}
           <button
