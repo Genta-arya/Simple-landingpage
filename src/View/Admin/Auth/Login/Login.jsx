@@ -77,11 +77,12 @@ const LoginForm = () => {
           const { username } = await usernameResponse.json();
           localStorage.setItem("username", username);
           navigate("/dashboard");
-        } else {
-          setLoginError("Gagal mendapatkan username");
-        }
+        } 
       } else if (response.status === 401) {
         setLoginError("Email atau password salah");
+      }
+      else if (response.status === 500) {
+        setLoginErrorServer("Gagal Terhubung Keserver");
       }
     } catch (error) {
       console.log("Error saat login:", error);
