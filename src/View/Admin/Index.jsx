@@ -15,17 +15,7 @@ const Dashboard = () => {
     }
   }, [navigate]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ 
 
   useEffect(() => {
     if (isMobile) {
